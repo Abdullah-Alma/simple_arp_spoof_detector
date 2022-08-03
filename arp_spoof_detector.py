@@ -2,6 +2,7 @@ import smtplib
 import psutil
 import scapy.all as scapy
 import socket
+import time
 
 
 class InterfaceNotFound(Exception):
@@ -42,7 +43,7 @@ try:
                 code_red(packet, sus_MAC)
 
 
-    def code_red(packet, sus_MAC):
+    def code_red(sus_MAC):
         send_mail("<YOUR_EMAIL>", "<YOUR_PASSWORD>", "\npossible arp spoofing attack \n" + str(sus_MAC))
         print("possible arp spoofing attack")
         time.sleep(time_gap)
