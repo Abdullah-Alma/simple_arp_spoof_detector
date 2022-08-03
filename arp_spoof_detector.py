@@ -1,6 +1,4 @@
 import smtplib
-import time
-from datetime import datetime, date
 import psutil
 import scapy.all as scapy
 import socket
@@ -45,16 +43,6 @@ try:
 
 
     def code_red(packet, sus_MAC):
-        now = datetime.now()
-        current_date = str(date.today())
-        current_time = now.strftime("%H:%M:%S")
-        today = current_date + " at " + current_time
-        file_to_write = open(r"C:\Users\Al8m_\Desktop\codeRed_Wifi.txt", "a")
-        file_to_write.write("--------------------------------------------------------------------\n"
-                            "" + str(today) + "\npossible arp spoofing attack, attacker MAC address " + str(sus_MAC) +
-                            "\n" + str(
-            packet.summary()) + "\n--------------------------------------------------------------------\n\n")
-        file_to_write.close()
         send_mail("<YOUR_EMAIL>", "<YOUR_PASSWORD>", "\npossible arp spoofing attack \n" + str(sus_MAC))
         print("possible arp spoofing attack")
         time.sleep(time_gap)
